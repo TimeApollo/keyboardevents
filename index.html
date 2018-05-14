@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        body {
+            background-image: url("maze.png");
+            background-repeat: no-repeat;
+            background-size: 80vmin;
+        }
+        #box {
+            width: 26px;
+            height: 30px;
+            position: absolute;
+            left: 50px;
+            bottom: 100px;
+            border: black 5px solid;
+            background-image: url("sonic.jpeg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        'use strict';
+        const boxBot = 100;
+        const boxLeft = 50;
+        let box = document.getElementById("box");
+        let botPos = 0;
+        let botAdd = 0;
+        let leftPos = 0;
+        let leftAdd = 0;
+        document.addEventListener('keydown', (event) => {
+            const keyName = event.key;
+            console.log('keydown event\n\n' + 'key: ' + keyName);
+            if (keyName === "ArrowDown") {
+                botAdd += -10;
+            }else if (keyName === "ArrowUp"){
+                botAdd += 10;
+            }else if (keyName === "ArrowLeft"){
+                leftAdd += -10;
+            }else if ( keyName === "ArrowRight" ){
+                leftAdd += 10;
+            }
+            botPos = boxBot + botAdd;
+            leftPos = boxLeft + leftAdd;
+            box.style.bottom = botPos + "px";
+            box.style.left = leftPos + "px";
+        });
+    </script>
+</body>
+
+</html>
